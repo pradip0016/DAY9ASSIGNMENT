@@ -2,21 +2,23 @@
 #Employee wage camputation program
 
 echo "Welcome To EmpWageComputation"
-empWageperHer=20
+empWagePerHr=20
+empFullTime=1
+empPartTime=2
 echo " check employee working period fulltime or partime or absent "
-Random=$((RANDOM%3))
-	if [ $Random -eq 1 ]
-	then
-		echo "Employee fulltime present" 
-		empHr=8
-	elif [ $Random -eq 2 ]
-	then 
-		echo "Emploee part time present"
-		empHr=4
-	else
-		echo "Employee Absent"
-	        empHr=0
-	fi
 
+random=$((RANDOM%3))	
+	case $random in 
+	$empFullTime )
+		empHr=8
+		echo "EMployee Full time Present";;
+	$empPartTime )
+		empHr=4
+		echo "EMployee Part time Present";;
+	* )
+		empHr=0
+		echo "EMployee Absent";;
+	esac
+}
 salary= $(( $empWageperHer * $ $emphr ))
 echo $salary

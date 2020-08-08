@@ -33,6 +33,4 @@ do
 	done
 }
 
-EmployeeManagement
 echo "Total Salary Per Month  is = $TotalSalary"
-

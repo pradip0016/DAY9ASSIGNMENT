@@ -5,20 +5,34 @@ echo "Welcome To EmpWageComputation"
 empWagePerHr=20
 empFullTime=1
 empPartTime=2
+dayzPerMonth=20
+TotalSalary=0
+
 echo " check employee working period fulltime or partime or absent "
 
-random=$((RANDOM%3))	
+for (( i=1; i<=$dayzPerMonth; i++  ))
+do	
+	random=$((RANDOM%3))	
 	case $random in 
 	$empFullTime )
-		empHr=8
-		echo "EMployee Full time Present";;
+		empHr=8 
+;;
+
 	$empPartTime )
-		empHr=4
-		echo "EMployee Part time Present";;
+		empHr=4 
+;;
+	
 	* )
-		empHr=0
-		echo "EMployee Absent";;
+		empHr=0 
+;;
 	esac
+
+	salary=$(( $empWagePerHr * $empHr ))
+	echo "daily sal: = $salary "
+	TotalSalary=$(( $salary + $TotalSalary ))
+	done
 }
-salary= $(( $empWageperHer * $ $emphr ))
-echo $salary
+
+EmployeeManagement
+echo "Total Salary Per Month  is = $TotalSalary"
+

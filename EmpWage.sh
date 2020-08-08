@@ -3,15 +3,19 @@
 
 echo "Welcome To EmpWageComputation"
 empWageperHer=20
-echo " check employee present or not "
-Random=$((RANDOM%2))
+echo " check employee working period fulltime or partime or absent "
+Random=$((RANDOM%3))
 	if [ $Random -eq 1 ]
 	then
-		echo "Employee is present"
-		emphr=8	
+		echo "Employee fulltime present" 
+		empHr=8
+	elif [ $Random -eq 2 ]
+	then 
+		echo "Emploee part time present"
+		empHr=4
 	else
-		echo "Employee is absent"
-		emphr=0	
+		echo "Employee Absent"
+	        empHr=0
 	fi
 
 salary= $(( $empWageperHer * $ $emphr ))

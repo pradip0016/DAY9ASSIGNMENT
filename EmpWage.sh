@@ -2,44 +2,38 @@
 #Employee wage camputation program
 
 echo "Welcome To EmpWageComputation"
-empWagePerHr=20 
-empFullTime=1
-empPartTime=2 
-dayzPerMonth=20
-TotalSalary=0 
-Total_hr=0
-Total_Max_hr=100 
+EMP_WAGE_PER_HR=20
+EMP_FULL_TIME=1
+EMP_PART_TIME=2
+DAYZ_PER_MONTH=20
+TOTAL_MAX_HR=100
+totalSalary=0
+totalHr=0
 
 echo " check employee working period fulltime or partime or absent "
 
-while [ $Total_hr -le $Total_Max_hr  ]
+function WorkingHours ()
+{
+
+	for (( i=1; i<=$DAYZ_PER_MONTH; i++ ))
 	do
 	random=$((RANDOM%3))
 	case $random in
 
-     	$empFullTime )
-		empHr=8 
-		;;
+     	$EMP_FULL_TIME )
+		EMP_HR=8 ;;
 
-	$empPartTime )
-		empHr=4 
-		;;
-	
+	$EMP_PART_TIME )
+		EMP_HR=4 ;;
+
 	* )
-		empHr=0 
-		;;
+		EMP_HR=0 ;;
 	esac
-		
-	Total_hr=$(( $Total_hr + $empHr ))
 
-	salary=$(( $empWagePerHr * $Total_hr ))
-
-	TotalSalary=$(( $salary + $TotalSalary ))
-	done
+	totalHr=$(($totalHr + $EMP_HR))
+done
 }
 
-<<<<<<< HEAD
-echo "Total Salary Per Month  is = $TotalSalary"
-=======
- echo "Total Salary is " = $TotalSalary        
->>>>>>> uc6_100hr
+WorkingHours
+
+ echo "Total work hours is " = $totalHr

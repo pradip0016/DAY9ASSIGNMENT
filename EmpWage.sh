@@ -1,16 +1,15 @@
 #!/bin/bash -x
-#Employee wage camputation program
-
 echo "Welcome To EmpWageComputation"
-EMP_WAGE_PER_HR=20
+EMP_WAGE_PER_HR=20 
 EMP_FULL_TIME=1
-EMP_PART_TIME=2
+EMP_PART_TIME=2 
 DAYZ_PER_MONTH=20
 TOTAL_MAX_HR=100
-totalSalary=0
-totalHr=0
 
-echo " check employee working period fulltime or partime or absent "
+totalSalary=0 
+totalHr=0
+salary=0
+
 
 function WorkingHours ()
 {
@@ -20,7 +19,7 @@ function WorkingHours ()
 	random=$((RANDOM%3))
 	case $random in
 
-     	$EMP_FULL_TIME )
+	$EMP_FULL_TIME )
 		EMP_HR=8 ;;
 
 	$EMP_PART_TIME )
@@ -30,10 +29,21 @@ function WorkingHours ()
 		EMP_HR=0 ;;
 	esac
 
-	totalHr=$(($totalHr + $EMP_HR))
-done
+	totalHr=$(( $totalHr + $EMP_HR ))
+	Salary=$(( $EMP_WAGE_PER_HR * $EMP_HR ))
+
+	totalSalary=$(( $EMP_WAGE_PER_HR * $totalHr  ))
+
+	ArrayForWages=( $Salary $totalSalary )
+        echo "Daily wages along with total wages" ${ArrayForWages[@]} 
+
+
+
+
+
+
+	done
+
 }
 
-WorkingHours
-
- echo "Total work hours is " = $totalHr
+	WorkingHours 
